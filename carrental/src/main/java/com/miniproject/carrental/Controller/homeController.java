@@ -3,6 +3,8 @@ package com.miniproject.carrental.Controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.miniproject.carrental.dao.CarBo;
 import com.miniproject.carrental.dao.Carrepo;
 import com.miniproject.carrental.dao.addcarrepo;
 import com.miniproject.carrental.model.Car;
@@ -25,6 +28,8 @@ public class homeController
 	Carrepo repo;
 	@Autowired
 	addcarrepo carrepo;
+	@Autowired
+   CarBo cb; 
 	
 	@RequestMapping("home")
 	public ModelAndView home(User user)
@@ -280,6 +285,16 @@ public ModelAndView m5(HttpServletRequest req,Model model,HttpSession session ) 
 		return mv;
 	}
 	
+	@RequestMapping("/viewcars")
+	public ModelAndView viewcars(Model model) throws Exception
+	{
+		ModelAndView mv = new ModelAndView("viewcars");
+		List<Car> li=cb.getAllCars();
+		System.out.println(li);
+		model.addAttribute("cars",li);
+		return mv;
+		
+	}
 }
 
 	

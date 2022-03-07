@@ -15,7 +15,7 @@
 				<tr>
 					<td>View Cars</td>
 					<td></td>
-					<td><button onclick="">view</button></td>
+					<td><a href=viewcars>view</a></td>
 				</tr>
 				<tr>
 					<td>Bookings</td>
